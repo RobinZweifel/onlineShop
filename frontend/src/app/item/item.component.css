@@ -1,0 +1,28 @@
+.shopping-cart-item {
+  max-width: 200px;
+}
+
+input {
+  max-width: 15px;
+  background-color: white;
+}
+
+.example-header-image {
+  background-size: cover;
+}
+
+mat-card {
+  margin: 1em;
+  background-color: #64ef79;
+}
+
+button{
+  background-color: #25b73e;
+}
+
+#amountSelector{
+  float: right;
+}
+
+mat-icon {
+}

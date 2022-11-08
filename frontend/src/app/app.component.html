@@ -1,0 +1,21 @@
+<mat-toolbar>
+  <button style="margin-right: .5em" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>Swiss CBD</span>
+  <span class="example-spacer"></span>
+
+  <button [routerLink]="['/cart']" style="margin-right: .5em" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <mat-icon>shopping_cart</mat-icon>
+  </button>
+
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+    <mat-icon>settings</mat-icon>
+  </button>
+
+</mat-toolbar>
+
+<body>
+  <app-item></app-item>
+</body>
+<router-outlet></router-outlet>

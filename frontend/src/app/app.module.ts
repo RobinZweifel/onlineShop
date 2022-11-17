@@ -12,13 +12,15 @@ import { MatCardModule } from "@angular/material/card";
 import { MatInputModule } from "@angular/material/input";
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { HomeComponent } from './home/home.component';
+import { ShoppingCartItemComponent } from './shopping-cart-item/shopping-cart-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ItemComponent,
     ShoppingCartComponent,
-    HomeComponent
+    HomeComponent,
+    ShoppingCartItemComponent
   ],
   imports: [
     BrowserModule,

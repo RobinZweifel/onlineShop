@@ -10,9 +10,7 @@ import java.util.logging.Logger;
 
 @RestController
 public class ItemController {
-
     Logger logger = Logger.getLogger(ItemController.class.getName());
-
     @Autowired
     private ItemService itemService;
 
@@ -24,7 +22,13 @@ public class ItemController {
         return itemService.getAllItems();
     }
 
-    //POST
+    //GET method for one item
+    @GetMapping("/item/{id}")
+    public Item getItem(@PathVariable int id) {
+        logger.info("getItem() called");
+        return itemService.getItem(id);
+    }
+
     //POST mapping for adding new item to the database
     @RequestMapping("/item")
     public void addItem(@RequestBody Item item) {

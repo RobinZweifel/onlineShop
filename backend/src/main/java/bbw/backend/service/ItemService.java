@@ -23,6 +23,12 @@ public class ItemService {
         return itemPreo.findAll();
     }
 
+    public Item getItem(int id) {
+        logger.log(Level.INFO, "getItem() called");
+        System.out.println(itemPreo.findById(id).toString());
+        return itemPreo.findById(id).get();
+    }
+
     //methode to add new item to the database
     public void addItem(Item item) {
         itemPreo.save(item);

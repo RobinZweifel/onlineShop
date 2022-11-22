@@ -1,14 +1,19 @@
 import { Injectable } from '@angular/core';
-import {Item} from "../../model/item";
+import {HttpClient} from "@angular/common/http";
+import {BehaviorSubject, Subject} from "rxjs";
+import {Item} from "../../model/Item";
+import {ItemRestResponse} from "../../model/ItemRestResponse";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ItemService {
 
-  test: number = 0;
+  private readonly _allItems$: Subject<Item[]> = new BehaviorSubject<Item[]>([]);
+  readonly allItems$ = this._allItems$.asObservable();
+  private readonly allItemsStore: Item[] = [];
 
-  items: ({ quantity: number; price: number; imageUrl: string; name: string; description: string; id: number })[] = [
+  itemsH: ({ quantity: number; price: number; imageUrl: string; name: string; description: string; id: number })[] = [
     {
       id: 1,
       description: "This is a test description",
@@ -43,9 +48,27 @@ export class ItemService {
     }
   ];
 
-  constructor() { }
+  constructor(private http: HttpClient) {
+    this.getItems();
+  }
+
+  get(){
+    this.http.get('http://localhost:8080/items').pipe(response => response);
+  }
+
+  emitItems() {
+    this._allItems$.next([...this.allItemsStore]);
+  }
 
   getItems() {
-    return this.items;
+    this.http.get<ItemRestResponse>('http://localhost:8080/items').subscribe(response => {
+      if (response.status === 200) {
+        response.items.forEach(item => {
+          this.allItemsStore.push(item);
+        });
+        this.emitItems();
+      }
+    });
+    this.emitItems();
   }
 }

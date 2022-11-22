@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
+import {ItemService} from "../services/item-service/item.service";
 
 @Component({
   selector: 'app-shopping-cart',
@@ -7,7 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShoppingCartComponent implements OnInit {
 
-  constructor() { }
+  itemList!: any[];
+  items: any[] = [];
+  subTotal!: any;
+
+  constructor(private router: Router, private itemService: ItemService) { }
 
   ngOnInit(): void {
   }

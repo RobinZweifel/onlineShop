@@ -8,11 +8,10 @@ import {ItemService} from "../services/item-service/item.service";
 })
 export class HomeComponent implements OnInit {
 
-
   constructor(private itemService: ItemService) { }
 
   ngOnInit(): void {
-
+    this.itemService.getItems();
   }
 
 }
